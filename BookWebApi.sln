@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWebApi", "BookWebApi\BookWebApi.csproj", "{4BDFBB25-BAC2-4A9D-A110-8F94F6DE606A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BO", "BO\BO.csproj", "{7F4DE116-4D1F-475D-BC0E-8BD9B133CAE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2BC9C133-2C8C-4EF8-98B8-2E2BB99CDB3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{B6328AB3-4CBE-4C5B-A5B7-D15696D1ECB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{4BDFBB25-BAC2-4A9D-A110-8F94F6DE606A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BDFBB25-BAC2-4A9D-A110-8F94F6DE606A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BDFBB25-BAC2-4A9D-A110-8F94F6DE606A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F4DE116-4D1F-475D-BC0E-8BD9B133CAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F4DE116-4D1F-475D-BC0E-8BD9B133CAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F4DE116-4D1F-475D-BC0E-8BD9B133CAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F4DE116-4D1F-475D-BC0E-8BD9B133CAE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC9C133-2C8C-4EF8-98B8-2E2BB99CDB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC9C133-2C8C-4EF8-98B8-2E2BB99CDB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC9C133-2C8C-4EF8-98B8-2E2BB99CDB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC9C133-2C8C-4EF8-98B8-2E2BB99CDB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6328AB3-4CBE-4C5B-A5B7-D15696D1ECB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6328AB3-4CBE-4C5B-A5B7-D15696D1ECB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6328AB3-4CBE-4C5B-A5B7-D15696D1ECB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6328AB3-4CBE-4C5B-A5B7-D15696D1ECB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
