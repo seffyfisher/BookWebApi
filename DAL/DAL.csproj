@@ -30,13 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -48,37 +50,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Author.cs">
-      <DependentUpon>BooksEntity.tt</DependentUpon>
+      <DependentUpon>BookShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Book.cs">
-      <DependentUpon>BooksEntity.tt</DependentUpon>
+      <DependentUpon>BookShop.tt</DependentUpon>
     </Compile>
-    <Compile Include="BooksEntity.Context.cs">
+    <Compile Include="BookShop.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BooksEntity.Context.tt</DependentUpon>
+      <DependentUpon>BookShop.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="BooksEntity.cs">
+    <Compile Include="BookShop.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BooksEntity.tt</DependentUpon>
+      <DependentUpon>BookShop.tt</DependentUpon>
     </Compile>
-    <Compile Include="BooksEntity.Designer.cs">
+    <Compile Include="BookShop.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BooksEntity.edmx</DependentUpon>
+      <DependentUpon>BookShop.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="BooksEntity.edmx">
+    <EntityDeploy Include="BookShop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BooksEntity.Designer.cs</LastGenOutput>
+      <LastGenOutput>BookShop.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="BooksEntity.edmx.diagram">
-      <DependentUpon>BooksEntity.edmx</DependentUpon>
+    <None Include="BookShop.edmx.diagram">
+      <DependentUpon>BookShop.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -86,15 +87,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BooksEntity.Context.tt">
+    <Content Include="BookShop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BooksEntity.edmx</DependentUpon>
-      <LastGenOutput>BooksEntity.Context.cs</LastGenOutput>
+      <DependentUpon>BookShop.edmx</DependentUpon>
+      <LastGenOutput>BookShop.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BooksEntity.tt">
+    <Content Include="BookShop.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BooksEntity.edmx</DependentUpon>
-      <LastGenOutput>BooksEntity.cs</LastGenOutput>
+      <DependentUpon>BookShop.edmx</DependentUpon>
+      <LastGenOutput>BookShop.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

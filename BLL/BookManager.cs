@@ -1,124 +1,135 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BO;
 using DAL;
 namespace BLL
 {
-    class BookManager
+    public class BookManager
     {
-
-        public BookModel[] GetAll()
+        public List<BookModel> GettAllBooks()
         {
-            
+
             using (BooksDBEntities db = new BooksDBEntities())
             {
-                List<Book> dbList = db.Books.ToList();
-                    
-                var tempList = dbList.Select(b =>
-                {
-                     return new BookModel
-                     {
-                         BookName = b.BookName,
-                         NumOfPages = (int)b.NumOfPages,
-                         Price = b.Price
-                     };
-                }).ToArray();
-                return tempList;
+                return db.Books.Select(b =>
+                       new BookModel()
+                       {
+                           BookName = b.BookName,
+                           NumOfPages = b.NumOfPages,
+                           Price = b.Price,
+                           Author = new AuthorModel()
+                           {
+                               Age = b.Author.Age,
+                               Image = b.Author.Image,
+                               Name = b.Author.Name
+                           }
+                       }
+
+                       ).ToList();
 
             }
+            
         }
 
 
-        //public BookModel[] GetBookById(int id)
-        //{
-
-        //    using (BooksDBEntities db = new BooksDBEntities())
-        //    {
-        //        Book tempBook = db.Books.Where(b => b.Id == id).Select(b=>
-                    
-        //        {
-        //            return new BookModel { 
-        //                BookName = b.BookName,
-        //                Id=b.Id,
-        //                Author=///
-        //                }
-
-        //        });
-                
-               
-        //        return tempBook;
-
-        //    }
-        //}
-
-
-
-
-        public bool Add(BookModel newBook)
+        public BookModel GetBook(string name)
         {
-            try { 
+            using (BooksDBEntities db = new BooksDBEntities())
+            {
+                return db.Books
+                    .Where(b => b.BookName == name)
+                    .Select(b =>
+                       new BookModel()
+                       {
+                           BookName = b.BookName,
+                           NumOfPages = b.NumOfPages,
+                           Price = b.Price,
+                           Author = new AuthorModel()
+                           {
+                               Age = b.Author.Age,
+                               Image = b.Author.Image,
+                               Name = b.Author.Name
+                           }
+
+                       }).FirstOrDefault();
+
+            };
+        }
+
+        public bool EditBook(string name, BookModel newBook)
+        {
+            try
+            {
                 using (BooksDBEntities db = new BooksDBEntities())
                 {
-                    List<DAL.Book> dbList = db.Books.ToList();
+                    var toEdit = db.Books
+                        .Where(b => b.BookName == name).FirstOrDefault();
 
-                    dbList.Add(
-
-                        new Book
-                        {
-                            Id = (int)newBook.Id,
-                            Price = newBook.Price,
-                            BookName = newBook.BookName,
-                            NumOfPages = newBook.NumOfPages,
-                            AuthorID = (int)newBook.Author.Id
-                            
-                        });
+                    toEdit.NumOfPages = newBook.NumOfPages;
+                    toEdit.Price = newBook.Price;
                     db.SaveChanges();
                     return true;
-                }
+                };
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 return false;
             }
-
         }
 
+        public bool AddBook(BookModel newBook)
+        {
+            try
+            {
+                using (BooksDBEntities db = new BooksDBEntities())
+                {
+                    db.Books.Add(
+                        new Book()
+                        {
+                            Price = newBook.Price,
+                            NumOfPages=newBook.NumOfPages,
+                            BookName=newBook.BookName,
+                            Author=new Author
+                            {
+                                Age=newBook.Author.Age,
+                                Image=newBook.Author.Image,
+                                Name=newBook.Author.Name
+                            }
+                        }
+                        );
+                    db.SaveChanges();
+                    return true;
+                };
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
-        public void Remove(int id)
+        public bool RemoveBook(string name)
         {
             using (BooksDBEntities db = new BooksDBEntities())
             {
-                List<Book> dbList = db.Books.ToList();
-
-                dbList.RemoveAt(id);
-                db.SaveChanges();
-            }
-        }
-
-        public bool Edit(int id)
-        {
-            try {
-                using (BooksDBEntities db = new BooksDBEntities())
+                var BookToRemove = db.Books
+                   .Where(b => b.BookName == name).FirstOrDefault();
+                if (BookToRemove != null)
                 {
-                    Book bookToRemove = db.Books.Where(b => b.Id == id).FirstOrDefault();
 
-                    db.Books.Remove(bookToRemove);
+                    db.Books.Remove(BookToRemove);
                     db.SaveChanges();
+                    return true;
+
                 }
-                return true;
-            }
-            catch(Exception err)
-            {
-                return false;
-            }
+                else
+                {
+                    return false;
+                }
+
+
+            };
         }
-
-
-
     }
-        
-    }
+}
 
